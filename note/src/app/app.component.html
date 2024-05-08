@@ -1,3 +1,15 @@
 <div class="WorkPlace">
-<input type="text" class="title" name="title">
+    <input (input)="InputTitle($event)" type="text" class="title" name="title"><br>
+    <textarea (input)="InputDescription($event)" class="description" name="description"></textarea><br>
+    {{title}}
+    <button class="submit" (click)="SaveNote()">Съхрани бележките</button>
 </div>
+ 
+<div>Всички клипове</div>
+@for (element of NotCollection; track $index) {
+<div class="element">
+    <div></div>
+    <div>{{element.description}}</div>
+    <button (click)="processVideoRecord(element, $index)">Редактирай</button>
+</div>
+}
