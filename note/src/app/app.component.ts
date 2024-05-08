@@ -30,7 +30,6 @@ export class AppComponent {
   }
 
   public SaveNote() {
-    this.index++;
 
     this.NotCollection[this.index].title = this.tempTitle;
     this.NotCollection[this.index].description = this.tempDescription;
