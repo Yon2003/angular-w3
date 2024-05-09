@@ -1,17 +1,21 @@
 <div class="WorkPlace">
-    <input [(ngModel)]="modelTitle" (input)="InputTitle($event)" type="text" class="title"><br>
+    <input [(ngModel)]="modelTitle" type="text" class="title"><br>
     <!-- @if(modelTitle.length < 5) {
         <div class="error">Заглавието е твърде кратко</div><br>
       } -->
 
 
-    <textarea  [(ngModel)]="modelDescription" (input)="InputDescription($event)" class="description" name="description"></textarea><br>
+    <textarea  [(ngModel)]="modelDescription" class="description" name="description"></textarea><br>
 
 
         <!-- <div *ngIf="showError" class="error-message">Описанието е твърде кратко</div><br> -->
     
-
+      @if(WillEdit==false){
+    <button class="submit" (click)="AddNote()">Добави бележките</button>
+    }
+    @if(WillEdit==true){
     <button class="submit" (click)="SaveNote()">Съхрани бележките</button>
+    }
 </div>
  
 <div>Всички клипове</div>
@@ -20,5 +24,6 @@
     <div>{{element.title}}</div>
     <div>{{element.description}}</div>
     <button (click)="EditBut(element, $index)">Редактирай</button>
+    <button (click)="DeleteNote($index)">триене</button>
 </div>
 }

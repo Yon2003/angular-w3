@@ -20,6 +20,10 @@ export class AppComponent {
   public modelTitle = '';
   public modelDescription = '';
 
+  public
+
+  public WillEdit=false;
+
 
   public NotCollection: { title: string, description: string }[] = [];
 
@@ -36,25 +40,37 @@ export class AppComponent {
 
   public SaveNote() {
 
-    if (this.NotCollection.length > this.index) {
-      this.NotCollection[this.index].title = this.tempTitle;
-      this.NotCollection[this.index].description = this.tempDescription;
-    } else {
-      this.NotCollection.push({ title: this.tempTitle, description: this.tempDescription });
-    }
+      this.NotCollection[this.index].title = this.modelTitle;
+      this.NotCollection[this.index].description = this.modelDescription;
     this.resetTempData();
     console.log("NotCollection:", this.NotCollection);
   }
 
   public EditBut(videoElement, index) {
+    this.WillEdit=true;
     this.index = index;
+    this.modelTitle=this.NotCollection[this.index].title;
+    this.modelDescription=this.NotCollection[this.index].description;
+    console.log("NotCollection:", this.NotCollection);
   }
 
 
 
   private resetTempData() {
-    this.index++;
-    this.tempTitle = '';
-    this.tempDescription = '';
+    this.modelTitle='';
+    this.modelDescription='';
+  }
+
+  public AddNote(){
+    this.NotCollection.push({ title: this.modelTitle, description: this.modelDescription });
+    this.resetTempData();
+  }
+
+  public DeleteNote(Element){
+    let counter=this.NotCollection.indexOf(Element);
+    this.NotCollection.splice(counter,1);
+    console.log("NotCollection:", this.NotCollection);
+    this.resetTempData();
+
   }
 }
