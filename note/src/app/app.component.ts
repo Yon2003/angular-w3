@@ -20,7 +20,7 @@ export class AppComponent {
   public modelTitle = '';
   public modelDescription = '';
 
-  public
+  public ErrorMsg= false;
 
   public WillEdit=false;
 
@@ -39,9 +39,9 @@ export class AppComponent {
 
 
   public SaveNote() {
-
       this.NotCollection[this.index].title = this.modelTitle;
       this.NotCollection[this.index].description = this.modelDescription;
+      this.WillEdit=false;
     this.resetTempData();
     console.log("NotCollection:", this.NotCollection);
   }
@@ -62,8 +62,15 @@ export class AppComponent {
   }
 
   public AddNote(){
+    if(this.modelTitle.length>5 && this.modelDescription.length>7){
     this.NotCollection.push({ title: this.modelTitle, description: this.modelDescription });
+    this.ErrorMsg=false;
     this.resetTempData();
+    }
+    else{
+      console.log('Не става');
+      this.ErrorMsg=true;
+    }
   }
 
   public DeleteNote(Element){

@@ -1,10 +1,15 @@
 
 .WorkPlace{
+    display: flex;
+    justify-content: space-between;
     text-align: center;
     margin: 50px;
     border: 2px solid #000; 
     border-radius: 15px; 
     padding: 10px; 
+}
+.WorkPlace > div {
+    width: 45%;
 }
 .title{
     border: 2px solid #000; 
@@ -26,5 +31,54 @@
 }
 .submit{
     width: 171px;
-    height: 20px;
+    margin-right: 5px;
+    padding: 8px 12px; 
+    background-color: #007bff; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+}
+.error {
+    color: #ff0000;
+    font-weight: bold;
+}
+.invalid {
+    border: 3px solid red;
+}
+
+
+.Notee {
+    padding: 10px;
+}
+
+.Notee > div {
+    margin-bottom: 10px;
+}
+
+.element {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px; 
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.element > div {
+    margin-bottom: 5px;
+}
+
+.element button {
+    margin-right: 5px;
+    padding: 8px 12px; 
+    background-color: #007bff; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
+.element button:hover {
+    background-color: #0056b3;
 }

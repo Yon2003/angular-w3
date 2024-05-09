@@ -1,29 +1,33 @@
 <div class="WorkPlace">
-    <input [(ngModel)]="modelTitle" type="text" class="title"><br>
-    <!-- @if(modelTitle.length < 5) {
-        <div class="error">Заглавието е твърде кратко</div><br>
-      } -->
+  <div>
+    @if(ErrorMsg==true) {
+    <div class="error">Заглавието е твърде кратко</div>
+    }
+    <input [(ngModel)]="modelTitle" type="text" class="title" [class.invalid]="ErrorMsg==true"><br>
+
+    @if(ErrorMsg==true) {
+    <div class="error">Описанието е твърде кратко</div>
+    }
+
+    <textarea [(ngModel)]="modelDescription" class="description" name="description"
+      [class.invalid]="ErrorMsg==true"></textarea><br>
 
 
-    <textarea  [(ngModel)]="modelDescription" class="description" name="description"></textarea><br>
-
-
-        <!-- <div *ngIf="showError" class="error-message">Описанието е твърде кратко</div><br> -->
-    
-      @if(WillEdit==false){
+    @if(WillEdit==false){
     <button class="submit" (click)="AddNote()">Добави бележките</button>
     }
     @if(WillEdit==true){
     <button class="submit" (click)="SaveNote()">Съхрани бележките</button>
     }
+  </div>
+  <div class="Notee">
+    @for (element of NotCollection; track $index) {
+    <div class="element">
+      <div>{{element.title}}</div>
+      <div>{{element.description}}</div>
+      <button (click)="EditBut(element, $index)">Редактирай</button>
+      <button (click)="DeleteNote($index)">Изтриване</button>
+    </div>
+    }
+  </div>
 </div>
- 
-<div>Всички клипове</div>
-@for (element of NotCollection; track $index) {
-<div class="element">
-    <div>{{element.title}}</div>
-    <div>{{element.description}}</div>
-    <button (click)="EditBut(element, $index)">Редактирай</button>
-    <button (click)="DeleteNote($index)">триене</button>
-</div>
-}
